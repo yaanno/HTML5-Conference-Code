@@ -1,10 +1,15 @@
 // variables
 
 @default_heading: 140%;
+@default_content_width: 1000px;
+@default_panel_width: 300px;
+@default_heading_font: 'Pacifico', Arial, Helvetica, sans-serif;
+@default_paragraph_font: 'Quattrocento Sans', Arial, Helvetica, sans-serif;
 
 // mixins
 
-.default_gradient (@from: #f5f5f5, @to: #ddd) {
+.default_gradient (@from: #f5f5f5, @to: #E6DADF) {
+    background: @from;
     background: -webkit-gradient(linear, left top, left bottom, from(@from), to(@to));
     background: -moz-linear-gradient(top,  @from,  @to);
 }
@@ -13,29 +18,32 @@
     text-shadow: @color 1px 1px 1px;
 }
 
-.default_shadow (@shadow_color: #888) {
-    -moz-box-shadow: 1px 1px 2px @shadow_color;
-    -webkit-box-shadow: 1px 1px 2px @shadow_color;
-    box-shadow: 1px 1px 2px @shadow_color;
+.default_box_shadow (@shadow_color: #888, @left: 1px, @top: 1px, @blur: 3px) {
+    @val: @left @top @blur @shadow_color;
+    
+    -moz-box-shadow: @val;
+    -webkit-box-shadow: @val;
+    box-shadow: @val;
 }
 
-.default_panel (@panel_width: 400px, @panel_padding: 10px, @panel_margin: 10px) {
+.default_panel (@panel_width: @default_panel_width, @panel_padding: 10px, @panel_margin: 10px) {
     margin: @panel_margin;
     padding: @panel_padding;
     width: @panel_width - (@panel_margin + @panel_padding) * 2;
     .default_gradient;
-    .default_shadow;
+    .default_box_shadow;
+    .default_rounded;
 }
 
 .default_link () {
-    color: blue;
+    color: #D5005D;
     text-decoration: underline;
     &:hover {
         text-decoration: none;
     }
 }
 
-.all-rounded (@radius: 10px) {
+.default_rounded (@radius: 10px) {
     -moz-border-radius: @radius;
     -webkit-border-radius: @radius;
     border-radius: @radius;
@@ -58,8 +66,13 @@
 // styles
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #ccc;
+    font-family: @default_paragraph_font;
+    background: #A69994;
+    overflow: hidden;
+}
+
+h1, h2, h3 {
+    font-family: @default_heading_font;
 }
 
 h1 {
@@ -83,16 +96,26 @@ a {
 }
 
 .content {
-    .centered(1000px);
+    .centered(@default_content_width);
+}
+
+#sidebar {
+    float: left;
+    width: @default_panel_width;
+}
+
+#content_main {
+    float: left;
+    margin-left: 10px;
+    position: relative;
 }
 
 .panel {
-    .all-rounded;
     .default_panel;
     
     h1 {
         margin-bottom: 10px;
-        color: #333;
+        color: #635650;
         text-align: center;
         .default_text_shadow;
     }
@@ -114,31 +137,84 @@ a {
             a {
                 display: block;
                 padding: 5px 7px;
-                .all-rounded(5px);
-                .animated(all, .1s);
+                text-decoration: none;
+                font-weight: bold;
+                
+                .default_rounded(5px);
+                .default_text_shadow;
+                .animated(padding, .1s);
                 
                 &:hover {
-                    .default_gradient(#fefefe);
-                    .default_shadow;
-                    .default_text_shadow;
-                    color: #444;
+                    .default_gradient(#fefefe, #ddd);
+                    .default_box_shadow;
+                    color: #635650;
                     padding-left: 14px;
-                }
-                
-                &:before {
-                    content: 'o';
-                    display: none;
-                    padding-right: 5px;
-                }
-                
-                &:hover:before {
-                    //display: inline-block;
+                    font-weight: bold;
                 }
             }
         }
     }
     
-    &.thin {
-        .default_panel(200px)
+}
+
+article {
+    
+    .meta {
+        margin: 0 0 .7em;
+        font-style: italic;
+        font-size: 90%;
+        text-align: center;
+    }
+    
+    .author {
+        font-weight: bold;
+        font-style: normal;
+    }
+    
+    .lead {
+        line-height: 1.5em;
+        
+        p {
+            padding-bottom: 1em;
+            
+            &:last-child {
+                padding-bottom: 0;
+            }
+        }
+    }
+    
+    &.panel {
+    .default_panel(500px);
+    .animated(opacity, .5s, ease-in-out);
+    
+    position: absolute;
+    left: -10000px;
+    opacity: 0;
+    
+        &:target {
+            position: static;
+            opacity: 1;
+        }
+        
+        h1 {
+            margin: .5em 0 1.5em;
+            font-size: @default_heading + 30;
+            color: #635650;
+        }
+        
+    }
+
+    footer {
+        .default_rounded;
+        .default_gradient;
+        
+        padding: .5em;
+        margin-top: .5em;
+        
+        p:last-child {
+            text-align: center;
+        }
+        
     }
 }
+    
