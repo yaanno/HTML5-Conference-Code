@@ -37,38 +37,6 @@
                         </p>
                     </footer>
                 </article>
-                <article id="article-1" class="panel">
-                    <h1>Article Title 1</h1>
-                    <div>
-                        <p>
-                            This is a lead for the Article 1
-                        </p>
-                    </div>
-                    <footer>
-                        <p>
-                            Article by Author at May 7, 2011
-                        </p>
-                        <p>
-                            <a href="#home">Back to Home</a>
-                        </p>
-                    </footer>
-                </article>
-                <article id="article-2" class="panel">
-                    <h1>Article Title 2</h1>
-                    <div>
-                        <p>
-                            This is a lead for the Article 2
-                        </p>
-                    </div>
-                    <footer>
-                        <p>
-                            Article by Author at May 7, 2011
-                        </p>
-                        <p>
-                            <a href="#home">Back to Home</a>
-                        </p>
-                    </footer>
-                </article>
                 <article id="article-3" class="panel">
                     <h1>Responsive Web Design</h1>
                     <div class="lead">
@@ -90,11 +58,11 @@
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
         <script>
-            $(function () {
-                $("#sidebar").delegate("a", "click", function () {
-                    //event.preventDefault();
-                });
-            })();
+            $(document).ready(function () {
+                var current_location = window.location.hash,
+                    home_location = "#home";
+                if (current_location !== home_location) window.location.hash = home_location;
+            });
         </script>
     </body>
 </html>
