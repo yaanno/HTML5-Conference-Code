@@ -1,0 +1,132 @@
+/*
+    Elastic multiple column layout
+    using media queries
+    adaptive to viewport width
+    
+    For monitor, handheld screen information:
+    http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
+*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%; /* 10px base unit */
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    background: orange;
+    margin: 1em;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 240%;
+    column-span: all;
+    line-height: 1.1em;
+    margin-bottom: .5em;
+}
+
+h2 {
+    break-before: avoid;
+}
+
+h2, h3, h4, h5, h6 {
+    font-size: 200%;
+    line-height: 1.1em;
+    margin-bottom: .5em;
+}
+
+p {
+    font-size: 160%;
+    line-height: 1.3em;
+    margin-bottom: .5em;
+}
+
+h1 + p, p:last-child {
+    padding-left: 1em;
+    font-style: italic;
+    column-span: all;
+}
+
+p:last-child {
+    margin-top: 1em;
+    text-align: right;
+}
+
+/*
+    Default: 3 columns
+*/
+
+.multicol {
+    -webkit-columns: 3 auto;
+    -webkit-column-gap: 3em;
+    -webkit-column-rule: 1px solid orange;
+    
+    -moz-columns: 3 auto;
+    -moz-column-gap: 3em;
+    -moz-column-rule: 1px solid orange;
+    
+    columns: 3 auto;
+    column-gap: 3em;
+    column-rule: 1px solid orange;
+    
+    /* more sugar */
+    
+    column-fill: balance;
+    
+    /*  */
+    
+    padding: 2em;
+    min-width: 20em;
+    margin: 0 auto;
+    background: #fff;
+    
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    border-radius: 1em;
+}
+
+/*
+    For giant screens: 4 columns
+*/
+
+@media screen and (min-width: 120em) {
+    
+    .multicol {
+        -webkit-columns: 4 auto;
+        -moz-columns: 4 auto;
+        columns: 4 auto;
+    }
+}
+
+/*
+    For small screens: 2 columns
+*/
+
+@media screen and (max-width: 60em) {
+    
+    .multicol {
+        -webkit-columns: 2 auto;
+        -moz-columns: 2 auto;
+        columns: 2 auto;
+    }
+}
+
+/*
+    For really small screens: 1 column
+*/
+
+@media screen and (max-width: 30em) {
+    
+    .multicol {
+        -webkit-columns: 1 auto;
+        -webkit-column-gap: 0;
+        -moz-columns: 1 auto;
+        -moz-column-gap: 0;
+        columns: 1 auto;
+        column-gap: 0;
+    }
+}
