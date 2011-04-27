@@ -1,7 +1,53 @@
+@import 'lessities';
+
 // Demo for illustrating CSS3 pseudos
 
-.rounded (@radius: 1em) {
-    -moz-border-radius: @radius;
-    -webkit-border-radius: @radius;
-    border-radius: @radius;
+.panel {
+    
+    h2 {
+        margin-bottom: .2em;
+        color: tan;
+        .animated(all, .2s);
+    }
+    
+    li {
+        .rounded;
+        .animated(all, .2s);
+        padding: .5em;
+        margin: .5em 0;
+        border: 1px solid gray;
+        
+        p {
+            margin: 0;
+            .selection;
+        }
+        
+        &:nth-child(even) {
+            background: gray;
+            color: white;
+            
+            h2 {
+                color: white;
+            }
+        }
+        
+        &:first-child {
+            margin-top: 0;
+        }
+        
+        &:last-child {
+            margin-bottom: 0;
+        }
+        
+        &:hover {
+            cursor: pointer;
+            background: tan;
+            color: white;
+            border: 1px solid tan;
+            
+            h2 {
+                color: white;
+            }
+        }
+    }
 }

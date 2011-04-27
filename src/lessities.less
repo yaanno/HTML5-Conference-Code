@@ -1,0 +1,39 @@
+.rounded (@radius: 1em) {
+    -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.multiple_columns(@count: 3, @width: auto, @gap: 3em, @rule: 1px solid orange) {
+    -webkit-columns: @count @width;
+    -webkit-column-gap: @gap;
+    -webkit-column-rule: @rule;
+    
+    -moz-column-count: @count; /* It seems the shorthand doesn't work for mozilla */
+    -moz-column-width: @width;
+    -moz-column-gap: @gap;
+    -moz-column-rule: @rule;
+    
+    columns: @count @width;
+    column-gap: @gap;
+    column-rule: @rule;
+    
+    column-fill: balance; /* let the browser balance the content between columns; for now in Opera */
+}
+
+.animated (@property: all, @timing: 1s, @function: ease-in) {
+    -moz-transition: @property @timing @function;
+    -webkit-transition: @property @timing @function;  
+    -moz-transition: @property @timing @function;  
+    -o-transition: @property @timing @function;  
+    transition: @property @timing @function;
+}
+
+.selection (@background: red, @color: white) {
+    &::-moz-selection {
+        background: @background;
+    }
+    &::selection {
+        background: @background;
+    }
+}
