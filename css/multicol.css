@@ -25,13 +25,13 @@ h1, h2, h3, h4, h5, h6, p {
 
 h1 {
     font-size: 240%;
-    column-span: all;
+    column-span: all; /* break out the columns; for now in Opera */
     line-height: 1.1em;
     margin-bottom: .5em;
 }
 
 h2 {
-    break-before: avoid;
+    break-after: avoid; /* avoid column breaks right after a heading, for nicer columns; for now in Opera */
 }
 
 h2, h3, h4, h5, h6 {
@@ -49,7 +49,7 @@ p {
 h1 + p, p:last-child {
     padding-left: 1em;
     font-style: italic;
-    column-span: all;
+    column-span: all; /* break out the columns; for now in Opera */
 }
 
 p:last-child {
@@ -74,9 +74,7 @@ p:last-child {
     column-gap: 3em;
     column-rule: 1px solid orange;
     
-    /* more sugar */
-    
-    column-fill: balance;
+    column-fill: balance; /* let the browser balance the content between columns; for now in Opera */
     
     padding: 2em;
     min-width: 20em;
