@@ -66,7 +66,9 @@ p:last-child {
     -webkit-column-gap: 3em;
     -webkit-column-rule: 1px solid orange;
     
-    -moz-columns: 3 auto;
+    /* It seems the shorthand doesn't work */
+    -moz-column-count: 3;
+    -moz-column-width: auto;
     -moz-column-gap: 3em;
     -moz-column-rule: 1px solid orange;
     
@@ -94,7 +96,7 @@ p:last-child {
     
     .multicol {
         -webkit-columns: 4 auto;
-        -moz-columns: 4 auto;
+        -moz-column-count: 4;
         columns: 4 auto;
     }
 }
@@ -107,7 +109,7 @@ p:last-child {
     
     .multicol {
         -webkit-columns: 2 auto;
-        -moz-columns: 2 auto;
+        -moz-column-count: 2;
         columns: 2 auto;
     }
 }
@@ -121,7 +123,7 @@ p:last-child {
     .multicol {
         -webkit-columns: 1 auto;
         -webkit-column-gap: 0;
-        -moz-columns: 1 auto;
+        -moz-column-count: 1;
         -moz-column-gap: 0;
         columns: 1 auto;
         column-gap: 0;

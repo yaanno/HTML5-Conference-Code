@@ -1,0 +1,127 @@
+/*
+    Elastic multiple column layout using media queries
+    Adaptive to viewport width using max-width
+    Possible refinement: use device-width & orientation
+    
+    For monitor, handheld etc. screen information:
+    http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density
+*/
+
+.multiple_columns(@count: 3, @width: auto, @gap: 3em, @rule: 1px solid orange) {
+    -webkit-columns: @count @width;
+    -webkit-column-gap: @gap;
+    -webkit-column-rule: @rule;
+    
+    -moz-column-count: @count; /* It seems the shorthand doesn't work for mozilla */
+    -moz-column-width: @width;
+    -moz-column-gap: @gap;
+    -moz-column-rule: @rule;
+    
+    columns: @count @width;
+    column-gap: @gap;
+    column-rule: @rule;
+    
+    column-fill: balance; /* let the browser balance the content between columns; for now in Opera */
+}
+
+.border_radius(@radius: 1em) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 62.5%; /* 10px base unit */
+    background: orange;
+    margin: 1em;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    font-size: 200%;
+    line-height: 1.1em;
+    margin-bottom: .5em;
+}
+
+h1 {
+    font-size: 240%;
+    column-span: all; /* break out the columns; for now in Opera */
+    line-height: 1.1em;
+    margin-bottom: .5em;
+}
+
+h2 {
+    break-after: avoid; /* avoid column breaks right after a heading, for nicer columns; for now in Opera */
+}
+
+p {
+    font-size: 160%;
+    line-height: 1.3em;
+    margin-bottom: .5em;
+    
+    &:last-child {
+        margin-top: 1em;
+        text-align: right;
+        padding-left: 1em;
+        font-style: italic;
+        column-span: all; /* break out the columns; for now in Opera */
+    }
+    
+    strong {
+        font-weight: bold;
+    }
+}
+
+h1 + p {
+    padding-left: 1em;
+    font-style: italic;
+    column-span: all; /* break out the columns; for now in Opera */
+}
+
+/*
+    Default: 3 columns
+*/
+
+.multicol {
+    .multiple_columns;
+    .border_radius;
+    
+    padding: 2em;
+    min-width: 20em;
+    margin: 0 auto;
+    background: #fff;
+}
+
+/*
+    For giant screens: 4 columns
+*/
+
+@media screen and (min-width: 100em) {
+    
+    .multicol {
+        .multiple_columns(4)
+    }
+}
+
+/*
+    For small screens: 2 columns
+*/
+
+@media screen and (max-width: 60em) {
+    
+    .multicol {
+        .multiple_columns(2);
+    }
+}
+
+/*
+    For really small screens: 1 column
+*/
+
+@media screen and (max-width: 30em) {
+    
+    .multicol {
+        .multiple_columns(1, auto, 0);
+    }
+}
