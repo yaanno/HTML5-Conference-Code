@@ -1,0 +1,33 @@
+@import 'lessities';
+
+// Demo for Flexible Box Layout Module
+// Read more: http://www.w3.org/TR/css3-flexbox/
+// and http://robertnyman.com/css3/flexible-box-layout/flexible-box-layout.html
+// Detailed Demo: http://www.css3.info/introducing-the-flexible-box-layout-module/
+
+.wrapper {
+    
+    // align, orientation
+    .boxify(none, horizontal);
+    
+    > section {
+        .rounded;
+        .flexify;
+        
+        margin-right: 1em;
+        padding: 1em;
+        
+        &:last-child {
+            margin-right: 0;
+        }
+        
+        &:nth-child(odd) {
+            background: gray;
+        }
+        
+        &:nth-child(even) {
+            background: tan;
+        }
+    }
+    
+}

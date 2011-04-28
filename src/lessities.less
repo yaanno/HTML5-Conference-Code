@@ -37,3 +37,30 @@
         background: @background;
     }
 }
+
+.boxify (@align: stretch, @orient: vertical) {
+    display: -webkit-box;
+    display: -moz-box;
+    display: box;
+    
+    -webkit-box-align: @align;
+    -moz-box-align: @align;
+    box-align: @align;
+    
+    -webkit-box-orient: @orient;
+    -moz-box-orient: @orient;
+    box-orient: @orient;
+    
+}
+
+.packify (@pack: center) {
+    -webkit-box-pack: @pack;
+    -moz-box-pack: @pack;
+    box-pack: @pack;
+}
+
+.flexify (@flex: 1) {
+    -webkit-box-flex: @flex;
+    -moz-box-flex: @flex;
+    box-flex: @flex;
+}

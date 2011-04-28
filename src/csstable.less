@@ -1,0 +1,22 @@
+@import 'lessities';
+
+// Demo for CSS Table Layout
+// Read more: http://www.onenaught.com/posts/201/use-css-displaytable-for-layout
+
+.wrapper {
+    
+    display: table;
+    
+    section {
+        .rounded;
+        
+        display: table-cell;
+        padding: 1em;
+        width: 33%;
+        
+        &:nth-child(odd) {
+            background: tan;
+        }
+    }
+    
+}
