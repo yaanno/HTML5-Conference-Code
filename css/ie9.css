@@ -1,0 +1,67 @@
+.wrapper {
+  z-index: 1;
+}
+.card {
+  position: relative;
+  background: red;
+  -moz-transition: all 1s ease-in;
+  -webkit-transition: all 1s ease-in;
+  -o-transition: all 1s ease-in;
+  -ms-transition: all 1s ease-in;
+  transition: all 1s ease-in;
+  padding: 1em;
+  text-align: center;
+  cursor: pointer;
+  color: white;
+  font-size: 300%;
+  width: 50%;
+  margin: 0 auto 1em;
+}
+.flipY:hover {
+  -webkit-transform: rotatey(360deg);
+  -o-transform: rotatey(360deg);
+  transform: rotatey(360deg);
+}
+.flipX:hover {
+  -webkit-transform: rotatex(360deg);
+  -o-transform: rotatex(360deg);
+  transform: rotatex(360deg);
+}
+.flipZ:hover {
+  -moz-transform: rotate(360deg);
+  -webkit-transform: rotatez(360deg);
+  -o-transform: rotatez(360deg);
+  transform: rotatez(360deg);
+}
+.card:hover {
+  background: green;
+}
+.card > p {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  -moz-transition: opacity 1s ease-in;
+  -webkit-transition: opacity 1s ease-in;
+  -o-transition: opacity 1s ease-in;
+  -ms-transition: opacity 1s ease-in;
+  transition: opacity 1s ease-in;
+  z-index: 2;
+}
+.card p:first-child {
+  opacity: 1;
+}
+.card:hover p:first-child {
+  opacity: 0;
+}
+.card p:last-child {
+  opacity: 0;
+}
+.flipY p:last-child {
+  -webkit-transform: rotatey(360deg);
+  -o-transform: rotatey(360deg);
+  transform: rotatey(360deg);
+}
+.card:hover p:last-child {
+  opacity: 1;
+}

@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Effects</title>
+            <link rel="stylesheet/less" href="../src/reset.less" type="text/css">
+            <link rel="stylesheet/less" href="../src/base.less" type="text/css">
+            <link rel="stylesheet/less" href="../src/effects.less" type="text/css">
+            <script src="../js/lessjs.min.js"></script>
+            <style>
+                @-webkit-keyframes blink {
+                        0% {
+                            background: white;
+                        }
+                        
+                        100% {
+                            background: red;
+                        }
+                }
+                
+                @-webkit-keyframes puff {
+                        0% {
+                            -webkit-transform: scale(1);
+                        }
+                        
+                        100% {
+                            -webkit-transform: scale(10);
+                            opacity: 0;
+                        }
+                }
+                
+                @-webkit-keyframes highlight {
+                        0% {
+                            background: rgba(238,221,130,.5);
+                        }
+                        33% {
+                            background: rgba(238,221,130,1)
+                        }
+                        100% {
+                            background: tan;
+                        }
+                }
+                .blink:hover {
+                    -webkit-animation: blink .5s 4;
+                }
+                .puff:hover {
+                    -webkit-animation: puff .5s 1 ease-in;
+                }
+                .highlight:hover {
+                    -webkit-animation: highlight .5s 1 ease-in-out;
+                }
+            </style>
+    </head>
+    <body>
+        <article class="wrapper">
+            
+            <section class="card blink">
+                <p>Blink</p>
+            </section>
+            
+            <section class="card puff">
+                <p>Puff</p>
+            </section>
+            
+            <section class="card highlight">
+                <p>Highlight</p>
+            </section>
+            
+        </article>
+    </body>
+</html>

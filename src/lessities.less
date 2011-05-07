@@ -23,9 +23,9 @@
 
 .animated (@property: all, @timing: 1s, @function: ease-in) {
     -moz-transition: @property @timing @function;
-    -webkit-transition: @property @timing @function;  
-    -moz-transition: @property @timing @function;  
-    -o-transition: @property @timing @function;  
+    -webkit-transition: @property @timing @function;
+    -o-transition: @property @timing @function;
+    -ms-transition: @property @timing @function;
     transition: @property @timing @function;
 }
 
@@ -63,4 +63,60 @@
     -webkit-box-flex: @flex;
     -moz-box-flex: @flex;
     box-flex: @flex;
+}
+
+.calc (@value) {
+    width: -moz-calc(@value);
+    width: -webkit-calc(@value);
+    width: -o-calc(@value);
+    width: -ms-calc(@value);
+    min-width: calc(@value);
+}
+
+// effects
+
+.glow (@color: orange, @blur: 5px) {
+    @val: 0px 0px @blur @color;
+    -moz-box-shadow: @val;
+    -webkit-box-shadow: @val;
+    box-shadow: @val;
+}
+
+.emboss (@color: #888,) {
+    @val: inset 3px 2px 0px 0 @color;
+    -moz-box-shadow: @val;
+    -webkit-box-shadow: @val;
+    box-shadow: @val;
+}
+
+.nono () {
+    
+}
+
+.dizzy () {
+    -moz-transform: skew(10deg) scale(1.1) rotate(720deg) translate(10px, 20px);
+    -webkit-transform: skew(10deg) scale(1.1, 2) rotate(720deg) translate(100px, 20px);
+    -o-transform: skew(30deg) scale(1.1,1.1) rotate(40deg) translate(10px, 10px);
+    transform: skew(30deg) scale(1.1,1.1) rotate(40deg) translate(10px, 20px);
+}
+
+.flipY () {
+    //-moz-transform: rotateY(360deg);
+    -webkit-transform: rotateY(360deg);
+    -o-transform: rotateY(360deg);
+    transform: rotateY(360deg);
+}
+
+.flipX () {
+    //-moz-transform: rotateX(360deg);
+    -webkit-transform: rotateX(360deg);
+    -o-transform: rotateX(360deg);
+    transform: rotateX(360deg);
+}
+
+.flipZ () {
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotateZ(360deg);
+    -o-transform: rotateZ(360deg);
+    transform: rotateZ(360deg);
 }

@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Flexible Box Layout</title>
+        <style>
+            .container {
+                display: -moz-box;
+                -moz-box-orient: horizontal;
+                
+                display: -webkit-box;
+                -webkit-box-orient: horizontal;
+                
+                display: box;
+                box-orient: horizontal;
+            }
+            .container div {
+                -moz-box-flex: 1;
+                -webkit-box-flex: 1;
+                box-flex: 1;
+                
+                padding: 10px;
+                color: white;
+            }
+            
+            .container div:nth-child(odd) {
+                background: blue;
+            }
+            
+            .container div:nth-child(even) {
+                background: gray;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <p>
+                    Let’s consider an example design.
+                </p>
+                <p>
+                    Let’s consider an example design.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                </p>
+            </div>
+            <div>
+                <p>
+                    Let’s consider an example design.
+                </p>
+                <p>
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                    Let’s consider an example design.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

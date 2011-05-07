@@ -1,0 +1,65 @@
+@import 'lessities.less';
+
+// Demo for CSS3 animations
+
+.wrapper {
+    z-index: 1;
+}
+
+.card {
+    position: relative;
+    background: red;
+    .animated;
+    padding: 1em;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    font-size: 300%;
+    width: 50%;
+    margin: 0 auto 1em;
+}
+
+.flipY:hover {
+    .flipY;
+}
+
+.flipX:hover {
+    .flipX;
+}
+
+.flipZ:hover {
+    .flipZ;
+}
+
+.card:hover {
+    background: green;
+}
+
+.card > p {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    margin: 0;
+    .animated(opacity, 1s);
+    z-index: 2;
+}
+
+.card p:first-child {
+    opacity: 1;
+}
+
+.card:hover p:first-child {
+    opacity: 0;
+}
+
+.card p:last-child {
+    opacity: 0;
+}
+
+.flipY p:last-child {
+    .flipY;
+}
+
+.card:hover p:last-child {
+    opacity: 1;
+}

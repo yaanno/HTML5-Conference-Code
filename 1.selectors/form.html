@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Order</title>
+            <link rel="stylesheet/less" href="../src/reset.less" type="text/css">
+            <link rel="stylesheet/less" href="../src/base.less" type="text/css">
+            <link rel="stylesheet/less" href="../src/form.less" type="text/css">
+            <script src="../js/lessjs.min.js"></script>
+    </head>
+    <body>
+        <article class="wrapper">
+            
+            <h1>Order Coffee Cups</h1>
+                <form action="" method="post" accept-charset="utf-8">
+                    
+                    <fieldset>
+                        <legend>Personal details</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    <span>Your name:</span>
+                                    <input required placeholder="eg. James T. Kirk" type="text" name="name">
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span>Your e-mail:</span>
+                                    <input required placeholder="eg. james.kirk@enterprise.com" type="email" name="email">
+                                </label>
+                            </li>
+                        </ul>
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Order details</legend>
+                        <ul>
+                            <li>
+                                <label>
+                                    <span>Your desired cup size:</span>
+                                    <input type="range" min="1" max="4" step="1" value="2" name="size">
+                                    <span class="current_value">Middle</span>
+                                    <span class="explain">Small (1), Middle (2), Large (3), Extra Large (4)</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <span>Number of coffee cups:</span>
+                                    <input type="number" min="1" step="1" max="10" value="1" name="size">
+                                    <span class="explain">Max. 10 cups</span>
+                                </label>
+                            </li>
+                            <li>
+                                <label style="display:inline">
+                                    <span>I have a coupon code:</span>
+                                </label>
+                                    <input type="checkbox">
+                                    <input type="text" name="coupon" disabled>
+                            </li>
+                            <li>
+                                <input type="submit" name="submit" value="Submit Order!">
+                            </li>
+                        </ul>
+                    </fieldset>
+                </form>
+        </article>
+        <script src="../js/jquery.min.js"></script>
+        <script>
+            (function ($) {
+                var $cupsize = $("input[type='range']"),
+                    $cupsize_value = $cupsize.next(),
+                    cupsize_value_map = {
+                        "1": "Small",
+                        "2": "Middle",
+                        "3": "Large",
+                        "4": "Extra Large"
+                    },
+                    $enable_coupon = $("input[type='checkbox']"),
+                    $coupon_code = $enable_coupon.next();
+                
+                console.log($enable_coupon, $coupon_code)
+                
+                $cupsize.bind("change", function (event) {
+                    if (this.value in cupsize_value_map) {
+                        $cupsize_value.text(cupsize_value_map[this.value]);
+                    }
+                });
+                
+                $enable_coupon.bind("click", function (event) {
+                    if (this.checked) {
+                        $coupon_code.attr({'disabled':false});
+                        return;
+                    }
+                    $coupon_code.attr({'disabled':true});
+                })
+                
+            })(jQuery);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+@import 'lessities';
+
+// Demo for illustrating CSS3 pseudos
+
+#main {
+    padding: 1em 1em 0;
+    
+    p {
+        &:first-letter {
+            font-size: 200%;
+            font-style: italic;
+        }
+    }
+}
+
+#comments {
+    
+    padding: 1em;
+    
+    h2 {
+        border-bottom: 3px solid orange;
+        padding-bottom: 2px;
+    }
+    
+    article {
+        
+        padding: .5em;
+        .rounded;
+        
+        h3 > span {
+            font-size: 70%;
+        }
+        
+        p {
+            &:first-letter {
+                font-size: 120%;
+            }
+            &:first-line {
+                font-style: italic;
+            }
+        }
+        
+        &:nth-child(odd) {
+            //background: tan;
+        }
+        
+        &:target {
+            background: orange;
+        }
+    }
+}
+
